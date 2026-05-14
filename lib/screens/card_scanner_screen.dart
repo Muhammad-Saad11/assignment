@@ -8,13 +8,6 @@ import '../parsers/card_parser.dart';
 import '../parsers/luhn.dart';
 import '../services/ocr_service.dart';
 
-/// Card scanner screen.
-///
-/// Flow:
-///   1. user taps "camera" or "gallery" -> we get an image file
-///   2. ML Kit pulls raw text from it
-///   3. parseCard() turns the noisy text into a CardDetails
-///   4. we render the result (or an error if nothing usable came out)
 class CardScannerScreen extends StatefulWidget {
   const CardScannerScreen({super.key});
 
@@ -40,7 +33,7 @@ class _CardScannerScreenState extends State<CardScannerScreen> {
   Future<void> _pick(ImageSource source) async {
     try {
       final picked = await _picker.pickImage(source: source);
-      if (picked == null) return; // user cancelled
+      if (picked == null) return;
 
       setState(() {
         _image = File(picked.path);
@@ -126,7 +119,8 @@ class _CardScannerScreenState extends State<CardScannerScreen> {
           borderRadius: BorderRadius.circular(12),
         ),
         child: const Center(
-          child: Text('No image selected', style: TextStyle(color: Colors.grey)),
+          child: Text('No image selected',
+              style: TextStyle(color: Colors.grey)),
         ),
       );
     }
@@ -205,10 +199,8 @@ class _Row extends StatelessWidget {
         children: [
           SizedBox(
             width: 110,
-            child: Text(
-              label,
-              style: const TextStyle(fontWeight: FontWeight.w600),
-            ),
+            child: Text(label,
+                style: const TextStyle(fontWeight: FontWeight.w600)),
           ),
           Expanded(child: Text(value)),
         ],
@@ -234,7 +226,9 @@ class _ErrorBox extends StatelessWidget {
         children: [
           const Icon(Icons.error_outline, color: Colors.red),
           const SizedBox(width: 8),
-          Expanded(child: Text(message, style: const TextStyle(color: Colors.red))),
+          Expanded(
+            child: Text(message, style: const TextStyle(color: Colors.red)),
+          ),
         ],
       ),
     );

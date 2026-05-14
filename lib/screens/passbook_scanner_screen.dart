@@ -7,10 +7,6 @@ import '../models/bank_details.dart';
 import '../parsers/passbook_parser.dart';
 import '../services/ocr_service.dart';
 
-/// Passbook / bank document scanner.
-///
-/// Mostly the same shape as [CardScannerScreen] but renders different
-/// fields. Kept as a separate class so each screen stays simple to read.
 class PassbookScannerScreen extends StatefulWidget {
   const PassbookScannerScreen({super.key});
 
@@ -122,7 +118,8 @@ class _PassbookScannerScreenState extends State<PassbookScannerScreen> {
           borderRadius: BorderRadius.circular(12),
         ),
         child: const Center(
-          child: Text('No image selected', style: TextStyle(color: Colors.grey)),
+          child: Text('No image selected',
+              style: TextStyle(color: Colors.grey)),
         ),
       );
     }
@@ -151,7 +148,9 @@ class _PassbookResult extends StatelessWidget {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 12),
-            _Row(label: 'Holder', value: details.accountHolderName ?? 'Not found'),
+            _Row(
+                label: 'Holder',
+                value: details.accountHolderName ?? 'Not found'),
             _Row(label: 'Account', value: details.accountNumber ?? 'Not found'),
             _Row(label: 'IFSC', value: details.ifscCode ?? 'Not found'),
           ],
@@ -175,7 +174,8 @@ class _Row extends StatelessWidget {
         children: [
           SizedBox(
             width: 90,
-            child: Text(label, style: const TextStyle(fontWeight: FontWeight.w600)),
+            child: Text(label,
+                style: const TextStyle(fontWeight: FontWeight.w600)),
           ),
           Expanded(child: Text(value)),
         ],
@@ -201,7 +201,9 @@ class _ErrorBox extends StatelessWidget {
         children: [
           const Icon(Icons.error_outline, color: Colors.red),
           const SizedBox(width: 8),
-          Expanded(child: Text(message, style: const TextStyle(color: Colors.red))),
+          Expanded(
+            child: Text(message, style: const TextStyle(color: Colors.red)),
+          ),
         ],
       ),
     );

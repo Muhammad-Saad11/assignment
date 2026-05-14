@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'card_scanner_screen.dart';
 import 'passbook_scanner_screen.dart';
 
-/// Landing page — just two buttons. Each navigates to its scanner.
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 

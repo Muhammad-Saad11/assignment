@@ -1,11 +1,7 @@
-/// Result of parsing a credit/debit card image.
-///
-/// Every field is nullable on purpose — OCR can miss any of them, and we
-/// want the UI to be able to show partial results instead of failing hard.
 class CardDetails {
-  final String? cardNumber;   // digits only, e.g. "4111111111111111"
-  final String? expiry;       // normalised "MM/YY"
-  final String? holderName;   // upper-cased name as printed, or null
+  final String? cardNumber;
+  final String? expiry;
+  final String? holderName;
 
   const CardDetails({
     this.cardNumber,
@@ -13,7 +9,6 @@ class CardDetails {
     this.holderName,
   });
 
-  /// Mask everything except the last 4 digits: "XXXX XXXX XXXX 1234".
   String get maskedCardNumber {
     final n = cardNumber;
     if (n == null || n.length < 4) return '----';

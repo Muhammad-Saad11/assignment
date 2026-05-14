@@ -1,4 +1,3 @@
-/// Result of parsing a bank passbook / cheque / statement image.
 class BankDetails {
   final String? accountHolderName;
   final String? accountNumber;
